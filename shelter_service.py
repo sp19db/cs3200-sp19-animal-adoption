@@ -20,7 +20,6 @@ def get_shelters():
         cursor = conn.cursor()
         cursor.execute(select_all_shelters_q)
         rows = cursor.fetchall()
-        print(rows)
         all_data = dict()
         shelters = []
         all_data["shelters"] = shelters
