@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animal Adoption</title>
+</head>
+<body>
+<div>
+    <h2>Animal Shelters</h2>
+</div>
+<div>
+    <p>Sample Text</p>
+    <button id="search">Search</button>
+</div>
+<div>
+    {% if shelters %}
+    <table>
+        {% for shelter in shelters %}
+        <tr>
+            <td>{{ shelter.id }}</td>
+            <td>{{ shelter.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+</div>
+</body>
+</html>
