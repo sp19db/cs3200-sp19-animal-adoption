@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Animal Adoption</title>
+
 </head>
 <body>
 <div>
@@ -12,18 +13,33 @@
     <p>Sample Text</p>
     <button id="search">Search</button>
 </div>
-<div>
-    {% if shelters %}
-    <table>
-        {% for shelter in shelters %}
-        <tr>
-            <td>{{ shelter.id }}</td>
-            <td>{{ shelter.name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+<div id="shelter-table">
 
 </div>
+<script>
+    document.getElementById("search").onclick = function () {
+        getShelters()
+    };
+
+    function getShelters() {
+        fetch('http://127.0.0.1:5000/shelters')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (shelters) {
+                table_dom = '<table>';
+                for (var i in shelters) {
+                    console.log(shelters[i])
+                    table_dom += '<tr>';
+                    table_dom += '<td>' + shelters[i].id + '</td>';
+                    table_dom += '<td>' + shelters[i].name + '</td>';
+                    table_dom += '</tr>'
+                }
+                table_dom += '</table>';
+
+                document.getElementById("shelter-table").innerHTML = table_dom
+            });
+    }
+</script>
 </body>
 </html>

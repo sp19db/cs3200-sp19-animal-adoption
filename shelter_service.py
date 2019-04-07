@@ -1,16 +1,17 @@
 from flask import Flask, render_template
+from flask_cors import CORS
 import mysql.connector
 import json
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def landing_page():
     return render_template("index.html")
 
 
-@app.route('/shelters/')
+@app.route('/shelters')
 def get_shelters():
     try:
         conn = mysql.connector.connect(user='root', password='cs3200db2019',
@@ -30,8 +31,7 @@ def get_shelters():
             data["name"] = name
             shelters.append(data)
 
-        response = json.dumps(all_data)
-        return render_template("index.html", shelters=shelters)
+        return json.dumps(shelters)
     except mysql.connector.Error as e:
         print(e)
     finally:
