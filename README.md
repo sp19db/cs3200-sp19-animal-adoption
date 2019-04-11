@@ -6,7 +6,8 @@
 
 **Dependencies:**
 + pip3 install flask
-+ pip3 install mysql-connector
++ pip3 install mysql-connector  
++ pip3 install flask-cors  
 
 **Tutorials:**  
 + mysql cursor: 
