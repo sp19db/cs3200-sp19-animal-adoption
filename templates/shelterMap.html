@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Google Maps Multiple Markers</title>
+  <script src="http://maps.google.com/maps/api/js?sensor=false"
+          type="text/javascript"></script>
+</head>
+<body>
+  <div id="map" style="width: 1000px; height: 600px;"></div>
+
+  <script type="text/javascript">var locations = [['Cat Lovers Rescue',42.083515,-70.990341,1],['North East Afghan Hound Rescue, Inc',42.586784,-70.972046,2],['Cavalier Alliance for Rescue, Research, and Education, Inc.',42.495533,-71.513046,3],['Hilltop Humane Society',42.161976,-71.042549,4],['PAWS',42.517056,-71.063255,5],['The Purr-fect Cat Shelter',42.141766,-71.396729,6],['Friends of Marbleheads Abandoned Animals',42.500668,-70.863304,7],['The Cat Connection',42.376484,-71.235611,8],['PALS Animal Life Savers',42.501297,-70.923004,9],['GSP Rescue New England',42.618256,-71.22802,10],['Great Dog Rescue New England',42.656857,-71.140785,11],['PittieLove Rescue Inc.',42.324005,-71.453682,12],['Billerica Cat Care Coalition',42.591274,-71.297028,13],['MassPAWS',42.373772,-70.975487,14],['Woburn Feral Cat Coalition',42.479263,-71.152275,15],['Forever Home Rescue New England',42.187126,-71.304169,16],['Kitty Connection Inc',42.415531,-71.101753,17],['MSPCA Boston Animal Care and Adoption Center',42.322891,-71.111206,18],['Guardian Angels Cat Rescue, Inc.',42.362595,-71.36145,19],['Rescue Angels, Inc.',42.207901,-71.003998,20]];
+
+var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(42.372994, -71.069110),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animals</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Pets near you</h2>
+</div>
+<div id="animals"></div>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    window.onload = function () {
+        getAnimals()
+    };
+
+    function getAnimals() {
+        fetch('http://127.0.0.1:5000/animals')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (animals) {
+                var animalsContainter = document.createElement('div');
+                animalsContainter.className = "container";
+                var animalsCardDeck = document.createElement('div');
+                animalsCardDeck.className = "row";
+
+                for (var i in animals) {
+                    var cardWrapper = document.createElement('div');
+                    cardWrapper.className = "col-sm-6 col-md-4 col-lg-3";
+                    var animalCard = document.createElement('div');
+                    animalCard.className = "card";
+                    var animalImage = document.createElement('img');
+                    animalImage.className = "card-img-top img-fluid";
+                    animalImage.style = "height:200px;";
+                    animalImage.src = animals[i].img_url;
+                    animalImage.alt = animals[i].name;
+                    var animalCardBody = document.createElement('div');
+                    animalCardBody.className = "card-body";
+                    var animalName = document.createElement('h5');
+                    animalName.className = "card-title";
+                    animalName.textContent = animals[i].name;
+
+                    var animalGender = document.createElement('p');
+                    animalGender.className = "card-text";
+                    animalGender.textContent = animals[i].gender;
+
+                    var animalAge = document.createElement('p');
+                    animalAge.className = "card-text";
+                    animalAge.textContent = animals[i].age;
+
+                    var animalSize = document.createElement('p');
+                    animalSize.className = "card-text";
+                    animalSize.textContent = animals[i].size;
+                    animalCard.appendChild(animalImage);
+                    animalCard.appendChild(animalCardBody);
+                    animalCardBody.appendChild(animalName);
+                    animalCardBody.appendChild(animalGender);
+                    animalCardBody.appendChild(animalAge);
+                    animalCardBody.appendChild(animalSize);
+                    cardWrapper.appendChild(animalCard)
+                    animalsCardDeck.appendChild(cardWrapper);
+                }
+                animalsContainter.appendChild(animalsCardDeck);
+
+                document.getElementById("animals").appendChild(animalsContainter);
+            });
+    }
+</script>
+</body>
+</html>
+<style>
+    .container {
+        margin-top: 20px;
+    }
+
+    .card {
+        text-align: center;
+        align-items: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 1s cubic-bezier(.25, .8, .25, 1);
+        overflow: hidden;
+    }
+
+    .card:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    .card-img-top {
+        object-fit: cover;
+        width: 300px;
+        height: 300px;
+        border-radius: 20px 20px 0px 0px;
+        transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
+    }
+
+    .card:hover .card-img-top {
+        transform: scale(1.1);
+        height: 300px;
+    }
+</style>
