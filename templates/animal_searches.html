@@ -10,135 +10,257 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Find an animal</title>
-    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 </head>
 <body>
 
 <div class="container">
-    <h1> Enter your preferenes below </h1>
+    <div class="d-md-flex h-md-100">
+        <div class="col-md-4 p-0 bg-indigo h-md-100">
+            <div class="options-panel">
+                <div>
+                    <h3>Animal Adoption</h3>
+                    <div class="row">
+                        <!-- Animal Type dropdown menu -->
+                        <div class="animal-type">
+                            <p>Type</p>
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-type">Any</span>
+                            </button>
+                            <ul class="dropdown-menu type">
+                                <li><a class="dropdown-item">Cat</a></li>
+                                <li><a class="dropdown-item">Dog</a></li>
+                                <li><a class="dropdown-item">Small & Furry</a></li>
+                                <li><a class="dropdown-item">Rabbit</a></li>
+                                <li><a class="dropdown-item">Bird</a></li>
+                                <li><a class="dropdown-item">Any</a></li>
+                            </ul>
+                        </div>
+                        <!--Breed  dropdown menu -->
+                        <div class="animal-breed">
+                            <p>Breed</p>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-breed">Any</span>
+                            </button>
+                            <ul class="dropdown-menu breed">
+                                <li><a class="dropdown-item" href="#">Labrador Retriever</a></li>
+                                <li><a class="dropdown-item" href="#">Afghan Hound</a></li>
+                                <li><a class="dropdown-item" href="#">Golden Retriever</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
+                        <!--Size dropdown menu -->
+                        <div class="animal-size">
+                            <p>Size</p>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-size">Any</span>
+                            </button>
+                            <ul class="dropdown-menu size">
+                                <li><a class="dropdown-item" href="#">Small</a></li>
+                                <li><a class="dropdown-item" href="#">Medium</a></li>
+                                <li><a class="dropdown-item" href="#">Large</a></li>
+                                <li><a class="dropdown-item" href="#">Extra Large</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
 
-    <!--enter zipcode -->
-    <div>
-        Zip code:<br>
-        <input type="text" value="02115">
-        <br>
+                        <!--Gender dropdown menu -->
+                        <div class="animal-gender">
+                            <p>Gender</p>
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-gender">Any</span>
+                            </button>
+                            <ul class="dropdown-menu gender">
+                                <li><a class="dropdown-item" href="#">Male</a></li>
+                                <li><a class="dropdown-item" href="#">Female</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
 
-        <!--enter max distance -->
-        <div>
-            Distance radius in miles:<br>
-            <input type="text" value="3">
-            <button id="show-all-shelters" class="btn btn-secondary">Locate Shelters</button>
-
-            <div class="row">
-                <!-- Animal Type dropdown menu -->
-                <div class="animal-type col">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-                        <span id="selected-animal-type">Animal Type</span>
-                    </button>
-                    <ul class="dropdown-menu type">
-                        <li><a class="dropdown-item" href="#">Cat</a></li>
-                        <li><a class="dropdown-item" href="#">Dog</a></li>
-                        <li><a class="dropdown-item" href="#">Bunny</a></li>
-                    </ul>
+                        <!--Age dropdown menu -->
+                        <div class="animal-age">
+                            <p>Age</p>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-age">Any</span>
+                            </button>
+                            <ul class="dropdown-menu age">
+                                <li><a class="dropdown-item" href="#">Baby</a></li>
+                                <li><a class="dropdown-item" href="#">Young</a></li>
+                                <li><a class="dropdown-item" href="#">Adult</a></li>
+                                <li><a class="dropdown-item" href="#">Senior</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <br>
-
-                <!--Size dropdown menu -->
-                <div class="Size col">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                        <span id="selected-animal-size">Animal Size</span>
-                    </button>
-                    <ul class="dropdown-menu size">
-                        <li><a class="dropdown-item" href="#">Small</a></li>
-                        <li><a class="dropdown-item" href="#">Medium</a></li>
-                        <li><a class="dropdown-item" href="#">Large</a></li>
-                        <li><a class="dropdown-item" href="#">Extra Large</a></li>
-                    </ul>
-                </div>
+                <!--enter zipcode -->
+                Zip code:<br>
+                <input type="text" value="02115">
                 <br>
 
-                <!--Gender dropdown menu -->
-                <div class="Gender col">
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                        <span id="selected-animal-gender">Animal Gender</span>
-                    </button>
-                    <ul class="dropdown-menu gender">
-                        <li><a class="dropdown-item" href="#">Male</a></li>
-                        <li><a class="dropdown-item" href="#">Female</a></li>
-                    </ul>
+                <!--enter max distance -->
+                <div>
+                    Distance radius in miles:<br>
+                    <input type="text" value="3">
+                    <button id="show-all-shelters" class="btn btn-secondary">Locate Shelters</button>
                 </div>
-                <br>
+                <div id="map" style="width: 1000px; height: 600px;"></div>
+            </div>
+        </div>
 
-                <!--Age dropdown menu -->
-                <div class="Age col">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                        <span id="selected-animal-age">Animal Age</span>
-                    </button>
-                    <ul class="dropdown-menu age">
-                        <li><a class="dropdown-item" href="#">Baby</a></li>
-                        <li><a class="dropdown-item" href="#">Young</a></li>
-                        <li><a class="dropdown-item" href="#">Adult</a></li>
-                        <li><a class="dropdown-item" href="#">Senior</a></li>
-                    </ul>
+        <div class="col-md-8 p-0 bg-white h-md-100">
+            <div class="d-md-flex align-items-center h-md-100 justify-content-center">
+                <div id="animals">
+                    <div id="animals-wrapper"></div>
                 </div>
-                <br>
-
-
-                <!--Breed  dropdown menu -->
-                <div class="Breed col">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span id="selected-animal-breed">Animal Breed</span>
-                    </button>
-                    <ul class="dropdown-menu breed">
-                        <li><a class="dropdown-item" href="#">Breed1</a></li>
-                        <li><a class="dropdown-item" href="#">Breed2</a></li>
-                        <li><a class="dropdown-item" href="#">Breed3</a></li>
-                    </ul>
-                </div>
-                <br>
             </div>
         </div>
     </div>
-    <div>
-        <br>
-        <p>Click submit to see your animals</p>
-        <a href="{{ url_for('get_animals_page') }}">
-            <button class="btn btn-secondary">Search</button>
-        </a>
-    </div>
-    <div id="map" style="width: 1000px; height: 600px;"></div>
 </div>
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--Google map-->
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
-<script type="text/javascript">
+<script>
+    window.onload = function () {
+        var type = $('#selected-animal-type').text();
+        var breed = $('#selected-animal-breed').text();
+        var size = $('#selected-animal-size').text();
+        var gender = $('#selected-animal-gender').text();
+        var age = $('#selected-animal-age').text();
+        var urlFilter = createFilter(type, breed, size, gender, age);
+        getAnimals(urlFilter);
+    };
+
     $('.type a').click(function () {
         $('#selected-animal-type').text($(this).text());
-    });
-    $('.size a').click(function () {
-        $('#selected-animal-size').text($(this).text());
-    });
-    $('.gender a').click(function () {
-        $('#selected-animal-gender').text($(this).text());
-    });
-    $('.age a').click(function () {
-        $('#selected-animal-age').text($(this).text());
+        refreshAnimalsByFilter();
     });
     $('.breed a').click(function () {
         $('#selected-animal-breed').text($(this).text());
+        refreshAnimalsByFilter();
+    });
+    $('.size a').click(function () {
+        $('#selected-animal-size').text($(this).text());
+        refreshAnimalsByFilter();
+    });
+    $('.gender a').click(function () {
+        $('#selected-animal-gender').text($(this).text());
+        refreshAnimalsByFilter();
+    });
+    $('.age a').click(function () {
+        $('#selected-animal-age').text($(this).text());
+        refreshAnimalsByFilter();
     });
 
+    function refreshAnimalsByFilter() {
+        var fieldMap = getFields();
+        var filterUrl = createFilter(fieldMap["type"],
+            fieldMap["breed"],
+            fieldMap["size"],
+            fieldMap["gender"],
+            fieldMap["age"]);
+        getAnimals(filterUrl)
+    }
+
+    function getFields() {
+        var type = $('#selected-animal-type').text();
+        var breed = $('#selected-animal-breed').text();
+        var size = $('#selected-animal-size').text();
+        var gender = $('#selected-animal-gender').text();
+        var age = $('#selected-animal-age').text();
+        console.log(type, breed, size, gender, age);
+        return {"type": type, "breed": breed, "size": size, "gender": gender, "age": age};
+    }
+
+    function createFilter(type, breed, size, gender, age) {
+        var filterUrl = 'http://127.0.0.1:5000/animals';
+        var additionalFilters = '';
+        if (type !== 'Any') {
+            additionalFilters += '&type=' + type
+        }
+        if (breed !== 'Any') {
+            additionalFilters += '&breed=' + breed
+        }
+        if (size !== 'Any') {
+            additionalFilters += '&size=' + size
+        }
+        if (gender !== 'Any') {
+            additionalFilters += '&gender=' + gender
+        }
+        if (age !== 'Any') {
+            additionalFilters += '&age=' + age
+        }
+        if (additionalFilters !== '') {
+            filterUrl += '?' + additionalFilters.substring(1, additionalFilters.length + 1);
+        }
+        return filterUrl
+    }
+
+    function getAnimals(filterUrl) {
+        fetch(filterUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (animals) {
+                var animalsWrapper = document.createElement('div');
+                animalsWrapper.id = "animals-wrapper";
+
+                var animalsContainter = document.createElement('div');
+                animalsContainter.className = "container";
+                var animalsCardDeck = document.createElement('div');
+                animalsCardDeck.className = "row";
+
+                for (var i in animals) {
+                    var animalCard = document.createElement('div');
+                    animalCard.className = "card";
+                    var animalImage = document.createElement('img');
+                    animalImage.className = "card-img-top";
+                    animalImage.style = "height:200px;";
+                    animalImage.src = animals[i].img_url;
+                    animalImage.alt = animals[i].name;
+                    var animalCardBody = document.createElement('div');
+                    animalCardBody.className = "card-body";
+                    var animalName = document.createElement('h5');
+                    animalName.className = "card-title";
+                    animalName.textContent = animals[i].name;
+
+                    var animalGender = document.createElement('p');
+                    animalGender.className = "card-text";
+                    animalGender.textContent = animals[i].gender;
+
+                    var animalAge = document.createElement('p');
+                    animalAge.className = "card-text";
+                    animalAge.textContent = animals[i].age;
+
+                    var animalSize = document.createElement('p');
+                    animalSize.className = "card-text";
+                    animalSize.textContent = animals[i].size;
+                    animalCardBody.appendChild(animalName);
+                    animalCardBody.appendChild(animalGender);
+                    animalCardBody.appendChild(animalAge);
+                    animalCardBody.appendChild(animalSize);
+                    animalCard.appendChild(animalImage);
+                    animalCard.appendChild(animalCardBody);
+                    animalsCardDeck.appendChild(animalCard);
+                }
+                animalsWrapper.appendChild(animalsCardDeck);
+
+                document.getElementById("animals").replaceChild(animalsWrapper,
+                    document.getElementById("animals-wrapper"));
+            });
+    }
+</script>
+
+<!--scripts for generating map-->
+<script type="text/javascript">
     document.getElementById("show-all-shelters").onclick = function () {
         showShelterOnMap()
     };
@@ -188,27 +310,87 @@
             })(marker, i));
         }
     }
-
 </script>
 
 </body>
 
 <style>
+
+    body {
+        position: relative;
+    }
+
     h1 {
         margin-top: 20px;
+    }
+
+    div.options-panel {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 35px;
     }
 
     input {
         height: 38px;
     }
 
-    .row {
-        margin-top: 35px;
-    }
-
     #map {
         margin-top: 35px;
         margin-bottom: 35px;
     }
+
+    .container {
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card {
+        text-align: center;
+        align-items: center;
+        margin: 15px 10px 15px 10px;
+        display: inline-block;
+        width: 210px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
+        border-radius: 20px;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+    }
+
+    .card:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    .card-img-top {
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+        border-radius: 20px 20px 0px 0px;
+        transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
+    }
+
+    .card:hover .card-img-top {
+        transform: scale(1.1);
+    }
+
+    @media (min-width: 576px) {
+    }
+
+    @media (min-width: 768px) {
+    }
+
+    @media (min-width: 992px) {
+    }
+
+    @media (min-width: 1200px) {
+    }
+
 </style>
 </html>
