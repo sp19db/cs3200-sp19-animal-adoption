@@ -3,10 +3,18 @@ import mysql.connector
 import json
 from webapp import app
 
-db_user = 'root'
-db_password = 'cs3200db2019'
-db_host = 'localhost'
-db_name = 'animal_shelter'
+DEVELOPMENT = False
+
+if DEVELOPMENT:
+    db_user = 'root'
+    db_password = 'cs3200db2019'
+    db_host = 'localhost'
+    db_name = 'animal_shelter'
+else:
+    db_user = 'bf5bd74fa96389'
+    db_password = 'eefffcd0'
+    db_host = 'us-cdbr-iron-east-02.cleardb.net'
+    db_name = 'heroku_cafd19139116b9e'
 
 
 def connect_to_db():

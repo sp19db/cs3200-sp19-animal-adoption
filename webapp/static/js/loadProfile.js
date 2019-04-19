@@ -20,7 +20,7 @@ window.onclick = function (event) {
 };
 
 function getChosenAnimalData(animalId) {
-    var singleAnimalUrl = 'http://127.0.0.1:8000/animal?id=' + animalId;
+    var singleAnimalUrl = serverPathPrefix + 'animal?id=' + animalId;
     fetch(singleAnimalUrl)
         .then(function (response) {
             return response.json();

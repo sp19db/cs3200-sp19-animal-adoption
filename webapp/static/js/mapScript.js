@@ -61,7 +61,7 @@ function searchLocationsNear(center) {
     clearLocations();
 
     var radius = document.getElementById('radiusSelect').value;
-    var searchUrl = 'http://127.0.0.1:8000/map?lat=' + center.lat() + "&lng=" + center.lng()
+    var searchUrl = serverPathPrefix + 'map?lat=' + center.lat() + "&lng=" + center.lng()
         + "&radius=" + radius + "&" + getAnimalFilterUrl();
     console.log(searchUrl);
     downloadUrl(searchUrl, function (data) {

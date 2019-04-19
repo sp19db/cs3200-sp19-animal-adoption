@@ -1,3 +1,8 @@
+var serverPathPrefix
+    = window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://animal-adoption.herokuapp.com";
+
 window.onload = function () {
     refreshAnimalsByFilter();
 };
@@ -60,7 +65,7 @@ function getType() {
 function breedMenu() {
     var type_name = getType();
     var menu = document.getElementsByClassName("breed")[0];
-    var filterUrl = 'http://127.0.0.1:8000/breeds?type=' + type_name;
+    var filterUrl = serverPathPrefix + 'breeds?type=' + type_name;
     fetch(filterUrl)
         .then(function (response) {
             return response.json();
@@ -141,7 +146,7 @@ function createFilter(type, breed, size, gender, age) {
 }
 
 function getAnimals(filterUrl) {
-    fetch("http://127.0.0.1:8000/animals?" + filterUrl)
+    fetch(serverPathPrefix + "animals?" + filterUrl)
         .then(function (response) {
             return response.json();
         })
