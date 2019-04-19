@@ -1,6 +1,5 @@
 window.onload = function () {
     refreshAnimalsByFilter();
-    initMap();
 };
 
 $(document).on("click", '.breed a', function () {
