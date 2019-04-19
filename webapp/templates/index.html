@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <title>Find an animal</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="d-md-flex h-md-100">
+        <div class="col-md-4 p-0 bg-indigo h-md-100">
+            <div class="options-panel">
+                <div>
+                    <h3>Animal Adoption</h3>
+
+                    <div class="animal-type row">
+                        <a class="a-type col"><span id="Cat" class="deselected">🐱</span></a>
+                        <a class="a-type col"><span id="Dog" class="deselected">🐶</span></a>
+                        <a class="a-type col"><span id="Rabbit" class="deselected">🐰</span></a>
+                        <a class="a-type col"><span id="Bird" class="deselected">🐦</span></a>
+                    </div>
+
+                    <div class="filter-group row">
+                        <!--Breed  dropdown menu -->
+                        <div class="animal-breed col-6">
+                            <p class="filter-label">Breed</p>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-breed">Any</span>
+                            </button>
+                            <ul class="dropdown-menu breed">
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
+                        <!--Size dropdown menu -->
+                        <div class="animal-size col-6">
+                            <p class="filter-label">Size</p>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-size">Any</span>
+                            </button>
+                            <ul class="dropdown-menu size">
+                                <li><a class="dropdown-item" href="#">Small</a></li>
+                                <li><a class="dropdown-item" href="#">Medium</a></li>
+                                <li><a class="dropdown-item" href="#">Large</a></li>
+                                <li><a class="dropdown-item" href="#">Extra Large</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
+                        <!--Gender dropdown menu -->
+                        <div class="animal-gender col-6">
+                            <p class="filter-label">Gender</p>
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-gender">Any</span>
+                            </button>
+                            <ul class="dropdown-menu gender">
+                                <li><a class="dropdown-item" href="#">Male</a></li>
+                                <li><a class="dropdown-item" href="#">Female</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
+                        <!--Age dropdown menu -->
+                        <div class="animal-age col-6">
+                            <p class="filter-label">Age</p>
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                                <span id="selected-animal-age">Any</span>
+                            </button>
+                            <ul class="dropdown-menu age">
+                                <li><a class="dropdown-item" href="#">Baby</a></li>
+                                <li><a class="dropdown-item" href="#">Young</a></li>
+                                <li><a class="dropdown-item" href="#">Adult</a></li>
+                                <li><a class="dropdown-item" href="#">Senior</a></li>
+                                <li><a class="dropdown-item" href="#">Any</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <input type="text" id="addressInput" size="16" placeholder="location or zip code" value="02115"/>
+                    <select id="radiusSelect" label="Radius">
+                        <option value="50" selected>50 kms</option>
+                        <option value="30">30 kms</option>
+                        <option value="20">20 kms</option>
+                        <option value="10">10 kms</option>
+                    </select>
+                    <input type="button" id="searchButton" value="Search"/>
+                    <div><select id="locationSelect"></select></div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 p-0 bg-white h-md-100">
+            <div class="d-md-flex h-md-100">
+                <div id="animals">
+                    <div id="animals-wrapper"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--the animal profile page-->
+    <div id="profile-page" class="profile">
+        <div class="profile-content">
+            <span class="close">&times;</span>
+            <div id="animal-profile-wrapper"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<!--custom scripts to make our site dynamic-->
+<script src="../static/js/mapScript.js"></script>
+<script src="../static/js/animalFilter.js"></script>
+<script src="../static/js/loadProfile.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz6GeAf-RwpKteAXv7qcFDFO9M32YedJI&callback=initMap"></script>
+</body>
+</html>
