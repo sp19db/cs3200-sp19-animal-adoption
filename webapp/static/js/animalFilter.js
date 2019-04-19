@@ -1,7 +1,7 @@
 var serverPathPrefix
     = window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "https://animal-adoption.herokuapp.com";
+    ? "http://localhost:5000/"
+    : "https://animal-adoption.herokuapp.com/";
 
 window.onload = function () {
     refreshAnimalsByFilter();
