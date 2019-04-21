@@ -12,9 +12,7 @@ function initMap() {
         mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
     });
     infoWindow = new google.maps.InfoWindow();
-
     searchButton = document.getElementById("searchButton").onclick = searchLocations;
-
     locationSelect = document.getElementById("locationSelect");
     locationSelect.onchange = function () {
         var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
@@ -59,7 +57,6 @@ function clearLocations() {
 
 function searchLocationsNear(center) {
     clearLocations();
-
     var radius = document.getElementById('radiusSelect').value;
     var searchUrl = serverPathPrefix + 'map?lat=' + center.lat() + "&lng=" + center.lng()
         + "&radius=" + radius + "&" + getAnimalFilterUrl();

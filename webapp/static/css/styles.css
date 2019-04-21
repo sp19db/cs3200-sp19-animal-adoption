@@ -84,6 +84,13 @@ input {
     border-radius: 15px;
 }
 
+#profile-map {
+    margin: 0;
+    width: 280px;
+    height: 280px;
+    border-radius: 12px;
+}
+
 .map-wrapper {
     margin-top: 35px;
 }
@@ -155,12 +162,16 @@ input {
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
+.animal-profile-wrapper {
+    text-align: center;
+}
+
 .profile-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 85%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -176,6 +187,23 @@ input {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.profile-image {
+    max-width: 240px;
+    max-height: 300px;
+}
+
+.info-title,
+.info {
+    padding: 0;
+    margin: 0;
+    font-size: 12pt;
+    text-align: left;
+}
+
+.info-title {
+    color: #9c9c9c;
 }
 
 @media (min-width: 576px) {
