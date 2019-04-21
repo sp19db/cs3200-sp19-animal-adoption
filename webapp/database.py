@@ -1,6 +1,6 @@
 import mysql.connector
 
-DEVELOPMENT = True
+DEVELOPMENT = False
 
 if DEVELOPMENT:
     db_user = 'root'
