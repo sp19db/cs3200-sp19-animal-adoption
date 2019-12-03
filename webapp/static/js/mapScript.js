@@ -60,7 +60,6 @@ function searchLocationsNear(center) {
     var radius = document.getElementById('radiusSelect').value;
     var searchUrl = serverPathPrefix + 'map?lat=' + center.lat() + "&lng=" + center.lng()
         + "&radius=" + radius + "&" + getAnimalFilterUrl();
-    console.log(searchUrl);
     downloadUrl(searchUrl, function (data) {
         var xml = parseXml(data);
         var markerNodes = xml.documentElement.getElementsByTagName("marker");
@@ -113,7 +112,6 @@ function downloadUrl(url, callback) {
             return response.json();
         })
         .then(function (locationMap) {
-            console.log(locationMap["location"]);
             callback(locationMap["location"]);
         });
 }
